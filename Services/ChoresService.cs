@@ -21,4 +21,10 @@ public class ChoresService
         Chore newChore = _repo.Create(choreData);
         return newChore;
     }
+
+    internal string Remove(Guid id)
+    {
+        string message = _repo.Remove(id);
+        return message;
+    }
 }

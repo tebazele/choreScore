@@ -39,4 +39,18 @@ public class ChoresController : ControllerBase
         }
     }
 
+    [HttpDelete("{id}")]
+    public ActionResult<string> Remove(Guid id)
+    {
+        try
+        {
+            string message = _choresService.Remove(id);
+            return Ok(message);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
 }

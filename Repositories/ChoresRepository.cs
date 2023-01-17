@@ -9,11 +9,11 @@ public class ChoresRepository
     {
         this.choreDb = new List<Chore>()
         {
-            new Chore(1, "Dishes", 8, false, "Kitchen"),
-            new Chore(2, "Laundry", 6, false, "LaundryRoom"),
-            new Chore(3, "Get Mail", 1, true, "LivingRoom"),
-            new Chore(4, "Vacuum", 10, false, "KidsRooms"),
-            new Chore(5, "Feed Bunnies", 3, false, "LivingRoom")
+            new Chore("Dishes", 8, false, Enums.ChoreLocations.Kitchen),
+            new Chore("Laundry", 6, false, Enums.ChoreLocations.LaundryRoom),
+            new Chore("Get Mail", 1, true, Enums.ChoreLocations.LivingRoom),
+            new Chore("Vacuum", 10, false, Enums.ChoreLocations.KidsRooms),
+            new Chore("Feed Bunnies", 3, false, Enums.ChoreLocations.LivingRoom)
         };
     }
 
@@ -26,5 +26,16 @@ public class ChoresRepository
     {
         choreDb.Add(choreData);
         return choreData;
+    }
+
+    internal string Remove(Guid id)
+    {
+        Chore choreToRemove = choreDb.Find(ch => ch.Id == id);
+        bool result = choreDb.Remove(choreToRemove);
+        if (result)
+        {
+            return $"{choreToRemove.Name} was removed from db";
+        }
+        return "no chore to delete";
     }
 }

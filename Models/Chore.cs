@@ -1,11 +1,11 @@
-// using choreScore.Enums;
+using choreScore.Enums;
 namespace choreScore.Models;
 
 public class Chore
 {
-    public Chore(int id, string name, int difficulty, bool done, string location)
+    public Chore(string name, int difficulty, bool done, ChoreLocations location)
     {
-        Id = id;
+        Id = Guid.NewGuid();
         Name = name;
         Difficulty = difficulty;
         Done = done;
@@ -13,10 +13,10 @@ public class Chore
     }
 
     // public Guid Id { get; set; }
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public int Difficulty { get; set; }
     public bool Done { get; set; }
-    public string Location { get; set; }
+    public ChoreLocations Location { get; set; }
 
 }
